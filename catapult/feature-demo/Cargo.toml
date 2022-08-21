@@ -13,7 +13,7 @@ rtt-target = { version = "0.3.1", features = ["cortex-m"] }
 #panic-halt = "0.2.0" 
 embedded-hal = "0.2.7"
 microbit-v2 = "0.13.0"
-superbit-board = { git = "https://github.com/mdarrik/superbit-board", version = "0.1.1" }
+superbit-board = { git = "https://github.com/mdarrik/superbit-board", version = "0.2.1" }
 #lsm303agr = "0.2.2" # uncomment if using magnetometer/accelerometer
 
 # this lets you use `cargo fix`!

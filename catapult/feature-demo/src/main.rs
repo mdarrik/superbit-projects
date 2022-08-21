@@ -55,6 +55,8 @@ fn main() -> ! {
         twim::Frequency::K100,
     );
     let mut superbit = SuperBit::new(external_i2c, pwm);
+    superbit.turn_off_all_neopixels().unwrap();
+    superbit.neopixel_show().unwrap();
     let mut event_timer = Timer::new(board.TIMER0);
     let mut display_pins = board.display_pins;
     display_pins.col1.set_low().unwrap();
