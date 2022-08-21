@@ -62,7 +62,7 @@ fn main() -> ! {
     display_pins.col3.set_low().unwrap();
     display_pins.col4.set_low().unwrap();
     display_pins.col5.set_low().unwrap();
-    while board.buttons.button_a.is_low().unwrap() {
+    while board.buttons.button_a.is_high().unwrap() {
         if display_pins.row1.is_set_low().unwrap() {
             display_pins.row1.set_high().unwrap();
             display_pins.row2.set_high().unwrap();
@@ -135,6 +135,8 @@ fn main() -> ! {
             5 => {
                 display_pins.row4.set_low().unwrap();
                 display_pins.row5.set_high().unwrap();
+                superbit.stop_motor(MotorPosition::M1).unwrap();
+                superbit.stop_motor(MotorPosition::M3).unwrap();
                 superbit
                     .set_all_neopixel_colors(RgbColor { r: 255, g: 0, b: 0 })
                     .unwrap();
