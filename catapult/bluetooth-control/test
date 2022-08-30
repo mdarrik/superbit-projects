@@ -1,0 +1,174 @@
+bluetooth-control v0.1.0 (/home/mdarrik/github/mdarrik/superbit-projects/catapult/bluetooth-control)
+├── cortex-m v0.7.6
+│   ├── bare-metal v0.2.5
+│   │   [build-dependencies]
+│   │   └── rustc_version v0.2.3
+│   │       └── semver v0.9.0
+│   │           └── semver-parser v0.7.0
+│   ├── bitfield v0.13.2
+│   ├── embedded-hal v0.2.7
+│   │   ├── nb v0.1.3
+│   │   │   └── nb v1.0.0
+│   │   └── void v1.0.2
+│   └── volatile-register v0.2.1
+│       └── vcell v0.1.3
+├── cortex-m-rt v0.7.1
+│   └── cortex-m-rt-macros v0.7.0 (proc-macro)
+│       ├── proc-macro2 v1.0.43
+│       │   └── unicode-ident v1.0.3
+│       ├── quote v1.0.21
+│       │   └── proc-macro2 v1.0.43 (*)
+│       └── syn v1.0.99
+│           ├── proc-macro2 v1.0.43 (*)
+│           ├── quote v1.0.21 (*)
+│           └── unicode-ident v1.0.3
+├── embassy-executor v0.1.0 (https://github.com/embassy-rs/embassy?rev=61356181b223e95f289ca3af3a038a699cde2112#61356181)
+│   ├── atomic-polyfill v1.0.1
+│   │   └── critical-section v1.1.0
+│   ├── cfg-if v1.0.0
+│   ├── critical-section v1.1.0
+│   ├── embassy-macros v0.1.0 (proc-macro) (https://github.com/embassy-rs/embassy?rev=61356181b223e95f289ca3af3a038a699cde2112#61356181)
+│   │   ├── darling v0.13.4
+│   │   │   ├── darling_core v0.13.4
+│   │   │   │   ├── fnv v1.0.7
+│   │   │   │   ├── ident_case v1.0.1
+│   │   │   │   ├── proc-macro2 v1.0.43 (*)
+│   │   │   │   ├── quote v1.0.21 (*)
+│   │   │   │   ├── strsim v0.10.0
+│   │   │   │   └── syn v1.0.99 (*)
+│   │   │   └── darling_macro v0.13.4 (proc-macro)
+│   │   │       ├── darling_core v0.13.4 (*)
+│   │   │       ├── quote v1.0.21 (*)
+│   │   │       └── syn v1.0.99 (*)
+│   │   ├── proc-macro2 v1.0.43 (*)
+│   │   ├── quote v1.0.21 (*)
+│   │   └── syn v1.0.99 (*)
+│   ├── futures-util v0.3.23
+│   │   ├── futures-core v0.3.23
+│   │   ├── futures-sink v0.3.23
+│   │   ├── futures-task v0.3.23
+│   │   ├── pin-project-lite v0.2.9
+│   │   └── pin-utils v0.1.0
+│   └── static_cell v1.0.0
+│       └── atomic-polyfill v1.0.1 (*)
+├── embassy-util v0.1.0 (https://github.com/embassy-rs/embassy?rev=61356181b223e95f289ca3af3a038a699cde2112#61356181)
+│   ├── atomic-polyfill v1.0.1 (*)
+│   ├── cfg-if v1.0.0
+│   ├── critical-section v1.1.0
+│   ├── embedded-io v0.3.0
+│   ├── futures-util v0.3.23 (*)
+│   └── heapless v0.7.16
+│       ├── hash32 v0.2.1
+│       │   └── byteorder v1.4.3
+│       └── stable_deref_trait v1.2.0
+│       [build-dependencies]
+│       └── rustc_version v0.4.0
+│           └── semver v1.0.13
+├── embedded-hal v0.2.7 (*)
+├── microbit-v2 v0.13.0
+│   └── microbit-common v0.13.0
+│       ├── embedded-hal v0.2.7 (*)
+│       ├── nrf52833-hal v0.14.1
+│       │   ├── embedded-hal v0.2.7 (*)
+│       │   ├── nrf-hal-common v0.14.1
+│       │   │   ├── cast v0.3.0
+│       │   │   ├── cfg-if v1.0.0
+│       │   │   ├── cortex-m v0.7.6 (*)
+│       │   │   ├── embedded-dma v0.1.2
+│       │   │   │   └── stable_deref_trait v1.2.0
+│       │   │   ├── embedded-hal v0.2.7 (*)
+│       │   │   ├── embedded-storage v0.2.0
+│       │   │   ├── fixed v1.18.0
+│       │   │   │   ├── az v1.2.1
+│       │   │   │   ├── bytemuck v1.12.1
+│       │   │   │   ├── half v2.1.0
+│       │   │   │   └── typenum v1.15.0
+│       │   │   ├── nb v1.0.0
+│       │   │   ├── nrf-usbd v0.1.1
+│       │   │   │   ├── bare-metal v1.0.0
+│       │   │   │   ├── cortex-m v0.7.6 (*)
+│       │   │   │   ├── critical-section v0.2.7
+│       │   │   │   │   ├── bare-metal v1.0.0
+│       │   │   │   │   ├── cfg-if v1.0.0
+│       │   │   │   │   └── cortex-m v0.7.6 (*)
+│       │   │   │   ├── usb-device v0.2.9
+│       │   │   │   └── vcell v0.1.3
+│       │   │   ├── nrf52833-pac v0.10.1
+│       │   │   │   ├── cortex-m v0.7.6 (*)
+│       │   │   │   ├── cortex-m-rt v0.7.1 (*)
+│       │   │   │   └── vcell v0.1.3
+│       │   │   ├── rand_core v0.6.3
+│       │   │   └── void v1.0.2
+│       │   └── nrf52833-pac v0.10.1 (*)
+│       └── tiny-led-matrix v1.0.2
+├── nrf-softdevice v0.1.0 (https://github.com/embassy-rs/nrf-softdevice?rev=e1e4e2a2c2e9a8243368214fac02532e79c127a8#e1e4e2a2)
+│   ├── cortex-m v0.7.6 (*)
+│   ├── cortex-m-rt v0.7.1 (*)
+│   ├── embassy-util v0.1.0 (https://github.com/embassy-rs/embassy?rev=1924f2d67d32a4466e71ef0aabc84305a9e8e165#1924f2d6)
+│   │   ├── atomic-polyfill v0.1.10
+│   │   │   └── critical-section v0.2.7 (*)
+│   │   ├── cfg-if v1.0.0
+│   │   ├── critical-section v0.2.7 (*)
+│   │   ├── futures-util v0.3.23 (*)
+│   │   └── heapless v0.7.16 (*)
+│   ├── embedded-storage v0.3.0
+│   ├── embedded-storage-async v0.3.0
+│   │   └── embedded-storage v0.3.0
+│   ├── fixed v1.18.0 (*)
+│   ├── futures v0.3.23
+│   │   ├── futures-channel v0.3.23
+│   │   │   ├── futures-core v0.3.23
+│   │   │   └── futures-sink v0.3.23
+│   │   ├── futures-core v0.3.23
+│   │   ├── futures-io v0.3.23
+│   │   ├── futures-sink v0.3.23
+│   │   ├── futures-task v0.3.23
+│   │   └── futures-util v0.3.23 (*)
+│   ├── heapless v0.7.16 (*)
+│   ├── nrf-softdevice-macro v0.1.0 (proc-macro) (https://github.com/embassy-rs/nrf-softdevice?rev=e1e4e2a2c2e9a8243368214fac02532e79c127a8#e1e4e2a2)
+│   │   ├── Inflector v0.11.4
+│   │   │   ├── lazy_static v1.4.0
+│   │   │   └── regex v1.6.0
+│   │   │       ├── aho-corasick v0.7.18
+│   │   │       │   └── memchr v2.5.0
+│   │   │       ├── memchr v2.5.0
+│   │   │       └── regex-syntax v0.6.27
+│   │   ├── darling v0.10.2
+│   │   │   ├── darling_core v0.10.2
+│   │   │   │   ├── fnv v1.0.7
+│   │   │   │   ├── ident_case v1.0.1
+│   │   │   │   ├── proc-macro2 v1.0.43 (*)
+│   │   │   │   ├── quote v1.0.21 (*)
+│   │   │   │   ├── strsim v0.9.3
+│   │   │   │   └── syn v1.0.99 (*)
+│   │   │   └── darling_macro v0.10.2 (proc-macro)
+│   │   │       ├── darling_core v0.10.2 (*)
+│   │   │       ├── quote v1.0.21 (*)
+│   │   │       └── syn v1.0.99 (*)
+│   │   ├── proc-macro2 v1.0.43 (*)
+│   │   ├── quote v1.0.21 (*)
+│   │   ├── syn v1.0.99 (*)
+│   │   └── uuid v0.8.2
+│   ├── nrf-softdevice-s113 v0.1.1 (https://github.com/embassy-rs/nrf-softdevice?rev=e1e4e2a2c2e9a8243368214fac02532e79c127a8#e1e4e2a2)
+│   ├── nrf52833-pac v0.11.0 (https://github.com/nrf-rs/nrf-pacs?rev=8f9da05ca1b496bd743f223ed1122dfe9220956c#8f9da05c)
+│   │   ├── cortex-m v0.7.6 (*)
+│   │   ├── cortex-m-rt v0.7.1 (*)
+│   │   └── vcell v0.1.3
+│   └── num_enum v0.5.7
+│       └── num_enum_derive v0.5.7 (proc-macro)
+│           ├── proc-macro2 v1.0.43 (*)
+│           ├── quote v1.0.21 (*)
+│           └── syn v1.0.99 (*)
+├── panic-rtt-target v0.1.2
+│   ├── cortex-m v0.7.6 (*)
+│   └── rtt-target v0.3.1
+│       ├── cortex-m v0.7.6 (*)
+│       └── ufmt-write v0.1.0
+├── rtt-target v0.3.1 (*)
+├── static_cell v1.0.0 (*)
+└── superbit-board v0.2.1 (https://github.com/mdarrik/superbit-board#af43e0b0)
+    ├── embedded-hal v0.2.7 (*)
+    ├── nrf-hal-common v0.14.1 (*)
+    └── pwm-pca9685 v0.3.1
+        ├── embedded-hal v0.2.7 (*)
+        └── nb v1.0.0

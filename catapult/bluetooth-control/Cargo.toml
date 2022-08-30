@@ -1,0 +1,41 @@
+[package]
+authors = ["Darrik <30670444+mdarrik@users.noreply.github.com>"]
+edition = "2021"
+readme = "README.md"
+name = "bluetooth-control"
+version = "0.1.0"
+
+[dependencies]
+cortex-m = "0.7.6"
+cortex-m-rt = "0.7.1"
+panic-rtt-target = { version = "0.1.2", features = ["cortex-m"] }
+rtt-target = { version = "0.3.1", features = ["cortex-m"] }
+#panic-halt = "0.2.0" 
+embedded-hal = "0.2.7"
+microbit-v2 = "0.13.0"
+nrf-softdevice = { git = "https://github.com/embassy-rs/nrf-softdevice", version = "0.1.0", rev= "e1e4e2a2c2e9a8243368214fac02532e79c127a8", features = ["s113", "nrf52833", "ble-peripheral", "ble-gatt-server"] }
+embassy-executor = { git = "https://github.com/embassy-rs/embassy", rev = "1924f2d67d32a4466e71ef0aabc84305a9e8e165", features = ["nightly"] }
+embassy-util = { git = "https://github.com/embassy-rs/embassy", rev = "1924f2d67d32a4466e71ef0aabc84305a9e8e165" }
+static_cell = "1.0.0"
+superbit-board = { git = "https://github.com/mdarrik/superbit-board", version = "0.2.1" }
+#lsm303agr = "0.2.2" # uncomment if using magnetometer/accelerometer
+
+# this lets you use `cargo fix`!
+[[bin]]
+name = "bluetooth-control"
+test = false
+bench = false
+
+[profile.release]
+codegen-units = 1 # better optimizations
+debug = true # symbols are nice and they don't increase the size on Flash
+lto = true # better optimizations
+
+[patch.crates-io]
+embassy-util = {git = "https://github.com/embassy-rs/embassy", rev="61356181b223e95f289ca3af3a038a699cde2112", version= "0.1.0"}
+embassy-executor = {git = "https://github.com/embassy-rs/embassy", rev="61356181b223e95f289ca3af3a038a699cde2112", version = "0.1.0"}
+microbit-common = {path = "../../nrf-rs/microbit/microbit-common"}
+microbit-v2 = {path="../../nrf-rs/microbit/microbit-v2"}
+
+[patch."https://github.com/mdarrik/superbit-board"]
+superbit-board = {path="../superbit-board"}
