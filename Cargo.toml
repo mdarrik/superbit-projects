@@ -1,9 +1,19 @@
 [workspace]
 members = [
-    "catapult/feature-demo"
+    "catapult/feature-demo",
+    "catapult/bluetooth-control"
 ]
 
 [profile.release]
 codegen-units = 1 # better optimizations
 debug = true # symbols are nice and they don't increase the size on Flash
 lto = true # better optimizations
+
+[patch.crates-io]
+embassy-util = {git = "https://github.com/embassy-rs/embassy", rev="1924f2d67d32a4466e71ef0aabc84305a9e8e165", version= "0.1.0"}
+embassy-executor = {git = "https://github.com/embassy-rs/embassy", rev="1924f2d67d32a4466e71ef0aabc84305a9e8e165", version = "0.1.0"}
+microbit-common = {path = "../../nrf-rs/microbit/microbit-common"}
+microbit-v2 = {path="../../nrf-rs/microbit/microbit-v2"}
+
+[patch."https://github.com/mdarrik/superbit-board"]
+superbit-board = {path="../superbit-board"}

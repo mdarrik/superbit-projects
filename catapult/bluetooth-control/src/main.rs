@@ -123,7 +123,7 @@ async fn softdevice_task(sd: &'static Softdevice) {
 #[embassy_executor::main]
 async fn main(spawner: Spawner) -> ! {
     rtt_init_print!();
-    let board = Board::take().unwrap();
+    let mut board = Board::take().unwrap();
     let pwm = Pwm::new(board.PWM0);
     let pwm_digital_pin = board.pins.p0_12.degrade().into_push_pull_output(Level::Low);
     pwm.set_output_pin(Channel::C0, pwm_digital_pin);
@@ -192,12 +192,22 @@ async fn main(spawner: Spawner) -> ! {
         b'i',
         b't',
     ];
+    board.display_pins.col1.set_low().unwrap();
+    board.display_pins.col2.set_low().unwrap();
+    board.display_pins.col3.set_low().unwrap();
+    board.display_pins.col4.set_low().unwrap();
+    board.display_pins.col5.set_low().unwrap();
     loop {
         let peripheral_config = peripheral::Config::default();
         let advertisement = peripheral::ConnectableAdvertisement::ScannableUndirected {
             scan_data,
             adv_data,
         };
+        superbit.stop_motor(MotorPosition::M1).unwrap();
+        superbit.stop_motor(MotorPosition::M3).unwrap();
+        board.display_pins.row1.set_high().unwrap();
+        board.display_pins.row2.set_high().unwrap();
+        board.display_pins.row3.set_high().unwrap();
 
         let connection = peripheral::advertise_connectable(sd, advertisement, &peripheral_config)
             .await
@@ -231,7 +241,7 @@ async fn main(spawner: Spawner) -> ! {
                             superbit
                                 .drive_motor(MotorPosition::M3, 255, MotorDirection::Forward)
                                 .unwrap();
-                            event_timer.delay_ms(500u16);
+                            event_timer.delay_ms(250u16);
                             superbit.stop_motor(MotorPosition::M1).unwrap();
                             superbit.stop_motor(MotorPosition::M3).unwrap();
                         }
@@ -242,29 +252,29 @@ async fn main(spawner: Spawner) -> ! {
                             superbit
                                 .drive_motor(MotorPosition::M3, 255, MotorDirection::Reverse)
                                 .unwrap();
-                            event_timer.delay_ms(500u16);
+                            event_timer.delay_ms(250u16);
                             superbit.stop_motor(MotorPosition::M1).unwrap();
                             superbit.stop_motor(MotorPosition::M3).unwrap();
                         }
                         direction if direction == Direction::Left as u8 => {
-                            superbit
-                                .drive_motor(MotorPosition::M1, 255, MotorDirection::Forward)
-                                .unwrap();
-                            superbit
-                                .drive_motor(MotorPosition::M3, 255, MotorDirection::Reverse)
-                                .unwrap();
-                            event_timer.delay_ms(500u16);
-                            superbit.stop_motor(MotorPosition::M1).unwrap();
-                            superbit.stop_motor(MotorPosition::M3).unwrap();
-                        }
-                        direction if direction == Direction::Right as u8 => {
                             superbit
                                 .drive_motor(MotorPosition::M1, 255, MotorDirection::Reverse)
                                 .unwrap();
                             superbit
                                 .drive_motor(MotorPosition::M3, 255, MotorDirection::Forward)
                                 .unwrap();
-                            event_timer.delay_ms(500u16);
+                            event_timer.delay_ms(250u16);
+                            superbit.stop_motor(MotorPosition::M1).unwrap();
+                            superbit.stop_motor(MotorPosition::M3).unwrap();
+                        }
+                        direction if direction == Direction::Right as u8 => {
+                            superbit
+                                .drive_motor(MotorPosition::M1, 255, MotorDirection::Forward)
+                                .unwrap();
+                            superbit
+                                .drive_motor(MotorPosition::M3, 255, MotorDirection::Reverse)
+                                .unwrap();
+                            event_timer.delay_ms(250u16);
                             superbit.stop_motor(MotorPosition::M1).unwrap();
                             superbit.stop_motor(MotorPosition::M3).unwrap();
                         }
@@ -274,8 +284,8 @@ async fn main(spawner: Spawner) -> ! {
                     }
                 }
                 ControllerServiceEvent::LedHandleWrite(value) => {
-                    if let Some(colorInfo) = LED_VALUES.get(usize::from(value)) {
-                        if let ColorInfo::Color((name, color)) = *colorInfo {
+                    if let Some(color_info) = LED_VALUES.get(usize::from(value)) {
+                        if let ColorInfo::Color((name, color)) = *color_info {
                             superbit.set_all_neopixel_colors(color).unwrap();
                         } else {
                             superbit.turn_off_all_neopixels().unwrap();
